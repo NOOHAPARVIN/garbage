@@ -14,7 +14,7 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
 <head>
   
-    <title>Garbage Management System: Driver is on the way for garbage</title>
+    <title>Garbage Management System: Assign Lodged Complain</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -35,14 +35,14 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Driver is on the way for garbage</a>
+                <a class="navbar-brand" href="javascript:void(0);">Assign Lodged Complain</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Driver is on the way for garbage </h2>
+                                <h2><strong>Assign Lodged</strong> Complain </h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -50,21 +50,21 @@ if (strlen($_SESSION['vamsaid']==0)) {
                                         <thead>
                                             <tr>
                                                <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
+                                        <th>Complain Number</th>
+                                        <th>Name</th>
+                                        <th>Mobile Number</th>
+                                        <th>Email</th>
                                     <th>Status</th>
                                         <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
+                                              <th>S.No</th>
+                                        <th>Complain Number</th>
+                                        <th>Name</th>
+                                        <th>Mobile Number</th>
+                                        <th>Email</th>
                                     <th>Status</th>
                                         <th>Action</th>
                                             </tr>
@@ -72,10 +72,8 @@ if (strlen($_SESSION['vamsaid']==0)) {
                                         <tbody>
                                             <tr>
                                                <?php
-                                               
-$sql="SELECT * from  tblbin where Status='On The Way'";
+$sql="SELECT tbllodgedcomplain.ComplainNumber,tbllodgedcomplain.AssignTo,tbllodgedcomplain.ID as compid,tbllodgedcomplain.Status,tbluser.ID as uid,tbluser.FullName,tbluser.MobileNumber,tbluser.Email from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID where tbllodgedcomplain.Status='Approved'";
 $query = $dbh -> prepare($sql);
-// $query-> bindParam(':did', $did, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 
@@ -85,18 +83,18 @@ if($query->rowCount() > 0)
 foreach($results as $row)
 {               ?>
                                               <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php  echo htmlentities($row->BinID);?></td>
-                                        <td><?php  echo htmlentities($row->Area);?></td>
-                                        <td><?php  echo htmlentities($row->Locality);?></td>
-                                        <td><?php  echo htmlentities($row->AssignDate);?></td>
+                                        <td><?php  echo htmlentities($row->ComplainNumber);?></td>
+                                        <td><?php  echo htmlentities($row->FullName);?></td>
+                                        <td><?php  echo htmlentities($row->MobileNumber);?></td>
+                                        <td><?php  echo htmlentities($row->Email);?></td>
                                              <?php if($row->Status==""){ ?>
 
                      <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?> (Assign to <?php  echo htmlentities($row->AssignTo);?>)
                   </td>
                   <?php } ?>         
                  
-                                        <td><a href="view-bin-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&binid=<?php echo htmlentities ($row->BinID);?>"class="btn btn-primary">View</a></td>
+                                        <td><a href="view-complain-detail.php?editid=<?php echo htmlentities ($row->compid);?>&&comid=<?php echo htmlentities ($row->ComplainNumber);?>" class="btn btn-primary">View</a></td>
                                             </tr>
                                          <?php $cnt=$cnt+1;}} ?> 
                                         </tbody>
