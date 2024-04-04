@@ -98,6 +98,7 @@ foreach($results as $row)
                 <a href="admin/login.php" class="nav-item nav-link">Admin</a>
                 <a href="driver/login.php" class="nav-item nav-link">Driver</a>
                 <a href="user/login.php" class="nav-item nav-link">User</a>
+                <a href="staff/login.php" class="nav-item nav-link">Staff</a>
             </div>
             
         </div>

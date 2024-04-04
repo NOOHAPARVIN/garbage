@@ -38,32 +38,15 @@ foreach($results as $row)
                        
                     </ul>
                 </li>
+                <li>
+                    <a href="" class="has-arrow"><i class="ti-user"></i><span>Staff</span></a>
+                    <ul>
+                        <li><a href="add-staff.php">Add Staff</a></li>
+                        <li><a href="manage-staff.php">Manage Staff</a></li>
+                       
+                    </ul>
+                </li>
               
-               <li>
-                    <a href="javascript:void(0)" class="has-arrow"><i class="ti-files"></i><span>Complain</span></a>
-                    <ul>
-                        <li><a href="all-complain.php">All Complain</a></li>
-                        <li><a href="new-complain.php">New Complain</a></li>
-                        <li><a href="assign-complain.php">Assign Complain</a></li>
-                        <li><a href="rejected-complain.php">Rejected Complain</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="has-arrow"><i class="ti-view-list"></i><span>Driver Complain Response</span></a>
-                    <ul>
-                        <li><a href="ontheway-complain.php">On The Way</a></li>
-                        <li><a href="completed-complain.php">Garbage Cleaned</a></li>
-                       
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="has-arrow"><i class="ti-view-list"></i><span>Driver Bin Response</span></a>
-                    <ul>
-                        <li><a href="ontheway.php">On The Way</a></li>
-                        <li><a href="completed.php">Task Completed</a></li>
-                       
-                    </ul>
-                </li>
                  <li>
                     <a href="javascript:void(0)" class="has-arrow"><i class="ti-search"></i><span>Search</span></a>
                     <ul>

@@ -4,20 +4,21 @@
                 <div class="image"><a href="javascript:void(0);"><img src="../assets/images/user.png" alt="User"></a></div>
                 <div class="detail mt-3">
                     <?php
-                     $did=$_SESSION['vamsdid'];
-                    $sql="SELECT Name,Email from  tbldriver where DriverID=:did";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+                    $did = $_SESSION["vamsdid"];
+                    $sql =
+                        "SELECT Name,Email from  tbldriver where DriverID=:did";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(":did", $did, PDO::PARAM_STR);
+                    $query->execute();
+                    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-foreach($results as $row)
-{    
-$email=$row->Email;   
-$fname=$row->Name;     
-}   ?>
-                    <h5 class="mb-0"><?php  echo $fname ;?></h5>
-                    <small><?php  echo $email ;?></small>
+                    foreach ($results as $row) {
+                        $email = $row->Email;
+                        $fname = $row->Name;
+                    }
+                    ?>
+                    <h5 class="mb-0"><?php echo $fname; ?></h5>
+                    <small><?php echo $email; ?></small>
                 </div>
             </div>
             <ul id="main-menu" class="metismenu">

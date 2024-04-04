@@ -6,7 +6,19 @@ if (strlen($_SESSION['vamsaid']==0)) {
   header('location:logout.php');
   } else{
 
+// Code for deleting product from cart
+if(isset($_GET['delid']))
+{
+$rid=intval($_GET['delid']);
+$sql="delete from tblstaff where ID=:rid";
+$query=$dbh->prepare($sql);
+$query->bindParam(':rid',$rid,PDO::PARAM_STR);
+$query->execute();
+ echo "<script>alert('Data deleted');</script>"; 
+  echo "<script>window.location.href = 'manage-staff.php'</script>";     
 
+
+}
 
   ?>
 <!doctype html>
@@ -14,7 +26,7 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
 <head>
   
-    <title>Garbage Management System: Driver is on the way for garbage</title>
+    <title>Garbage Management System: Manage Staff</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -35,14 +47,14 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Driver is on the way for garbage</a>
+                <a class="navbar-brand" href="javascript:void(0);">Mange Staff</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Driver is on the way for garbage </h2>
+                                <h2><strong>Mange</strong> Staff </h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -50,32 +62,28 @@ if (strlen($_SESSION['vamsaid']==0)) {
                                         <thead>
                                             <tr>
                                                <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
+                                        <th>Employee ID</th>
+                                        <th>Name</th>
+                                        <th>MobileNumber</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
+                                        <th>Staff ID</th>
+                                        <th>Name</th>
+                                        <th>MobileNumber</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <tr>
-                                               <?php
-                                               
-$sql="SELECT * from  tblbin where Status='On The Way'";
+                                                <?php
+$sql="SELECT * from tblstaff";
 $query = $dbh -> prepare($sql);
-// $query-> bindParam(':did', $did, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 
@@ -84,19 +92,12 @@ if($query->rowCount() > 0)
 {
 foreach($results as $row)
 {               ?>
-                                              <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php  echo htmlentities($row->BinID);?></td>
-                                        <td><?php  echo htmlentities($row->Area);?></td>
-                                        <td><?php  echo htmlentities($row->Locality);?></td>
-                                        <td><?php  echo htmlentities($row->AssignDate);?></td>
-                                             <?php if($row->Status==""){ ?>
-
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
-                  </td>
-                  <?php } ?>         
-                 
-                                        <td><a href="view-bin-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&binid=<?php echo htmlentities ($row->BinID);?>"class="btn btn-primary">View</a></td>
+                                               <td><?php echo htmlentities($cnt);?></td>
+                                        <td><?php  echo htmlentities($row->StaffID);?></td>
+                                        <td><?php  echo htmlentities($row->Name);?></td>
+                                        <td><?php  echo htmlentities($row->MobileNumber);?></td>
+                                        <td><?php  echo htmlentities($row->Email);?></td>
+                                        <td><a href="edit-staff-detail.php?editid=<?php echo htmlentities ($row->ID);?>" class="btn btn-primary">Edit</a>  <a href="manage-staff.php?delid=<?php echo ($row->ID);?>" onclick="return confirm('Do you really want to Delete ?');" class="btn btn-primary">Delete</a></td>
                                             </tr>
                                          <?php $cnt=$cnt+1;}} ?> 
                                         </tbody>
