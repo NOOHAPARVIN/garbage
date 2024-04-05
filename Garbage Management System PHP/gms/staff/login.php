@@ -16,9 +16,7 @@ $query-> bindParam(':password', $password, PDO::PARAM_STR);
     if($query->rowCount() > 0)
 {
 foreach ($results as $result) {
-$_SESSION['vamsid']=$result->ID;
-$_SESSION['vamsdid']=$result->StaffID;
-
+    $_SESSION['vamssid']=$result->ID;
 }
 $_SESSION['login']=$_POST['did'];
 echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";

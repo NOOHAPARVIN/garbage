@@ -161,16 +161,7 @@ foreach($results as $row)
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
-                    <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i><?php  echo $row->PageDescription;?></p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+<?php  echo $row->MobileNumber;?></p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php  echo $row->Email;?></p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                   
                 </div>
                 <div class="col-lg-4 col-md-6">
 <?php

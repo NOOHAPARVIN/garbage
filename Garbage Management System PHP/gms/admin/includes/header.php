@@ -20,31 +20,32 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-xl py-0">
                         <div class="py-3 px-3">
                             <?php
-$sql="SELECT tbllodgedcomplain.ComplainNumber,tbllodgedcomplain.AssignTo,tbllodgedcomplain.ID as compid,tbllodgedcomplain.Status,tbluser.ID as uid,tbluser.FullName,tbluser.MobileNumber,tbluser.Email from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID  where tbllodgedcomplain.Status is null";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+                            $sql =
+                                "SELECT tbllodgedcomplain.ComplainNumber,tbllodgedcomplain.AssignTo,tbllodgedcomplain.ID as compid,tbllodgedcomplain.Status,tbluser.ID as uid,tbluser.FullName,tbluser.MobileNumber,tbluser.Email from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID  where tbllodgedcomplain.Status is null";
+                            $query = $dbh->prepare($sql);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-$cnt=1;
-$totalreq=$query->rowCount();
-?>
+                            $cnt = 1;
+                            $totalreq = $query->rowCount();
+                            ?>
 
-                            <h5 class="heading h6 mb-0">Complain Notifications <span class="badge badge-pill badge-primary text-uppercase float-right"><?php echo $totalreq;?></span></h5>
+                            <h5 class="heading h6 mb-0">Complain Notifications <span class="badge badge-pill badge-primary text-uppercase float-right"><?php echo $totalreq; ?></span></h5>
                         </div>
                         <div class="list-group">
-                             <?php
-                        foreach($results as $row)
-{ 
-
-  ?>
-                            <a href="view-complain-detail.php?editid=<?php echo htmlentities ($row->compid);?>&&comid=<?php echo htmlentities ($row->ComplainNumber);?>" class="list-group-item list-group-item-action d-flex">
-                                <div class="list-group-img"><span class="avatar bg-purple"><?php echo $row->ComplainNumber;?></span></div>
+                             <?php foreach ($results as $row) { ?>
+                            <a href="view-complain-detail.php?editid=<?php echo htmlentities(
+                                $row->compid
+                            ); ?>&&comid=<?php echo htmlentities(
+    $row->ComplainNumber
+); ?>" class="list-group-item list-group-item-action d-flex">
+                                <div class="list-group-img"><span class="avatar bg-purple"><?php echo $row->ComplainNumber; ?></span></div>
                                 <div class="list-group-content">
-                                    <div class="list-group-heading"> <?php echo $row->FullName;?><small><?php echo $row->DateofRequest;?></small></div>
+                                    <div class="list-group-heading"> <?php echo $row->FullName; ?><small><?php echo $row->DateofRequest; ?></small></div>
                                   
                                 </div>
                             </a>
-                          <?php }?> 
+                          <?php } ?> 
                            
                         </div>
                         <div class="py-3 text-center">
