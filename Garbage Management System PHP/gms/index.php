@@ -60,17 +60,20 @@ foreach($results as $row)
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small><?php  echo $row->PageDescription;?></small>
+                    <small>Aluva,
+Ernakulam,
+Kerala - 683101,
+India</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center py-3">
                     <small class="far fa-envelope text-primary me-2"></small>
-                    <small><?php  echo $row->Email;?></small>
+                    <small>gsm@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+<?php  echo $row->MobileNumber;?></small>
+                    <small>9995989129</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -162,9 +165,12 @@ foreach($results as $row)
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i><?php  echo $row->PageDescription;?></p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+<?php  echo $row->MobileNumber;?></p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php  echo $row->Email;?></p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Aluva,
+Ernakulam,
+Kerala - 683101,
+India</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9995989129</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>gms@gmail.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
